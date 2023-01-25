@@ -2,33 +2,49 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-interface AppState {
+interface InputState {
     feet: number;
     inches: number;
     weight: number;
 }
+interface ResultState {
+    height: number;
+    weight: number;
+    BMI: number;
+}
 function App() {
-    const [appState, setAppState] = useState<AppState>({feet:0,inches:0,weight:0});
-    let heightInCm = InchesToCm(appState.feet,appState.inches);
-    let weightInKg = PoundsToKg(appState.weight);
-    let BMI = CalculateBMI(heightInCm, weightInKg)
+    const [inputState, setInputState] = useState<InputState>({feet:0,inches:0,weight:0});
+    const [resultState, setResultState] = useState<ResultState>({height:0,weight:0,BMI:0});
+    const updateResults=()=>{
+        let heightInCm = InchesToCm(inputState.feet,inputState.inches);
+        let weightInKg = PoundsToKg(inputState.weight);
+        let BMI = CalculateBMI(heightInCm, weightInKg)
+        setResultState({height: heightInCm, weight:weightInKg, BMI})
+    }
     return (
-    <div>
-        <div className="box">
-      {/*  Feet Input*/}
-      <input value={appState.feet} type="number" min={1} step={1} title={"Feet"} onChange={(e)=>setAppState({...appState,feet:+e.target.value})}/>
+    <div className="box">
+        <div className="wave"></div>
+        <div className="main-content">
+            <h1 className="title">Annies BMI Calculator</h1>
+            <div className="input">
+                {/*  Feet Input*/}
+                <input className="text-input" style={{width: "30px", marginRight: "1px"}} value={inputState.feet} type="number" min={1} step={1} title={"Feet"}
+                       onChange={(e) => setInputState({...inputState, feet: +e.target.value})}/>
 
-        {/*  Inches Input*/}
-      <input value={appState.inches} type="number" min={1} max={12} step={1} title={"Inches"} onChange={(e)=>setAppState({...appState,inches:+e.target.value})}/>
+                {/*  Inches Input*/}
+                <input className="text-input" style={{width: "40px", marginRight: "30px"}} value={inputState.inches} type="number" min={1} max={12} step={1}
+                       title={"Inches"} onChange={(e) => setInputState({...inputState, inches: +e.target.value})}/>
 
-        {/*  Weight Input*/}
-      <input value={appState.weight} type="number" onChange={(e)=>setAppState({...appState,weight:+e.target.value})}/>
+                {/*  Weight Input*/}
+                <input className="text-input" style={{width: "70px", textAlign: "right"}} value={inputState.weight} type="number"
+                       onChange={(e) => setInputState({...inputState, weight: +e.target.value})}/>
+            </div>
+            <button onClick={updateResults}>Calculate</button>
+            <div className="results">
+                <p>Height = {resultState.height.toFixed(2)} cm</p>
+                <p>Weight = {resultState.weight.toFixed(2)} Kg</p>
+                <p>BMI = {resultState.BMI.toFixed(3)}</p>
         </div>
-      <button>Calculate</button>
-        <div>
-            <p>Height in cm = {heightInCm}</p>
-            <p>Weight in Kg = {weightInKg}</p>
-            <p>The BMI is = {BMI}</p>
         </div>
     </div>
   );
