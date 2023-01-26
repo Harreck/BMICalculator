@@ -39,7 +39,9 @@ function App() {
                 <input className="text-input" style={{width: "70px", textAlign: "right"}} value={inputState.weight} type="number"
                        onChange={(e) => setInputState({...inputState, weight: +e.target.value})}/>
             </div>
-            <button onClick={updateResults}>Calculate</button>
+            <div className="box" style={{marginTop: "13px"}} onClick={updateResults} >
+                <a href="#" className="btn btn-white btn- animate">Calculate</a>
+            </div>
             <div className="results">
                 <p>Height = {resultState.height.toFixed(2)} cm</p>
                 <p>Weight = {resultState.weight.toFixed(2)} Kg</p>
