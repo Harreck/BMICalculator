@@ -26,18 +26,20 @@ function App() {
         <div className="wave"></div>
         <div className="main-content">
             <h1 className="title">Annies BMI Calculator</h1>
-            <div className="input">
+            <div className="input form-field">
                 {/*  Feet Input*/}
-                <input className="text-input" style={{width: "30px", marginRight: "1px"}} value={inputState.feet} type="number" min={1} step={1} title={"Feet"}
+
+                <input className="text-input" style={{width: "40px"}} type="number" min={1} step={1} title={"Feet"}
                        onChange={(e) => setInputState({...inputState, feet: +e.target.value})}/>
-
+                <p className="units" style={{marginRight: "1px"}}>ft</p>
                 {/*  Inches Input*/}
-                <input className="text-input" style={{width: "40px", marginRight: "30px"}} value={inputState.inches} type="number" min={1} max={12} step={1}
+                <input className="text-input" style={{width: "50px"}} type="number" min={1} max={12} step={1}
                        title={"Inches"} onChange={(e) => setInputState({...inputState, inches: +e.target.value})}/>
-
+                <p className="units" style={{marginRight: "30px"}}>in</p>
                 {/*  Weight Input*/}
-                <input className="text-input" style={{width: "70px", textAlign: "right"}} value={inputState.weight} type="number"
+                <input className="text-input" style={{width: "80px", textAlign: "right"}} type="number"
                        onChange={(e) => setInputState({...inputState, weight: +e.target.value})}/>
+                <p className="units">lbs</p>
             </div>
             <div className="box" style={{marginTop: "13px"}} onClick={updateResults} >
                 <a href="#" className="btn btn-white btn- animate">Calculate</a>
