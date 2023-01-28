@@ -33,7 +33,7 @@ function App() {
                        onChange={(e) => setInputState({...inputState, feet: +e.target.value})}/>
                 <p className="units" style={{marginRight: "1px"}}>ft</p>
                 {/*  Inches Input*/}
-                <input className="text-input" style={{width: "50px"}} type="number" min={1} max={12} step={1}
+                <input className="text-input" style={{width: "50px"}} type="number" min={1} step={1}
                        title={"Inches"} onChange={(e) => setInputState({...inputState, inches: +e.target.value})}/>
                 <p className="units" style={{marginRight: "30px"}}>in</p>
                 {/*  Weight Input*/}
