@@ -45,9 +45,9 @@ function App() {
                 <a href="#" className="btn btn-white btn- animate">Calculate</a>
             </div>
             <div className="results">
-                <p>Height = {resultState.height.toFixed(2)} cm</p>
-                <p>Weight = {resultState.weight.toFixed(2)} Kg</p>
-                <p>BMI = {resultState.BMI.toFixed(3)}</p>
+                <p>Height = {resultState.height.toFixed(1)} cm</p>
+                <p>Weight = {resultState.weight.toFixed(1)} Kg</p>
+                <p>BMI = {resultState.BMI.toFixed(1)}</p>
         </div>
         </div>
     </div>
